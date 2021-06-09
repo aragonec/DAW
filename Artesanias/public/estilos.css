@@ -6,3 +6,55 @@
     background-color: blueviolet;
     height: 200px;
 }
+
+.columnas{
+    margin: 1px;
+    background-color:deepskyblue;
+    text-align:center;
+    color: white; 
+    }
+.fila1a{
+    height: 150px;
+    font-size: 50px;
+    line-height:270%
+}
+.fila1b{
+    height: 120px;
+    font-size: 50px;
+    line-height: 220%;
+}
+.fila2{
+    height: 80px; 
+    font-size: 50px;
+    line-height: 155%; 
+}
+.fila3{
+    height: 80px;
+    font-size: 50px;
+    line-height: 155%;
+}
+.fila4{
+    height: 50px;
+    font-size: 25px;
+    line-height: 200%;
+}
+.fila5{
+    height: 50px;
+    font-size: 25px;
+    line-height: 200%;
+}
+@media (min-width: 768px){
+    .fila3{
+        margin:0px;
+        border: 1px solid white;
+    }
+}
+@media (min-width: 992px){
+    .fila4{
+        margin:0px;
+    }
+    .fila5{
+        margin:4.16%;
+        display: block;        
+    }
+}
