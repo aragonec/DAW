@@ -33,7 +33,7 @@ aria-hidden="true">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="/admin/productos" method="POST">
+            <form action="/admin/productos" method="POST" enctype="multipart/form-data">
                 @if($message= Session::get('errorInsert'))
                     <div class="alert alert-danger aler-dismissable fade show col-12" role="alert">
                         <h5>ERROR:</h5>
@@ -61,6 +61,10 @@ aria-hidden="true">
                     <div class="form-group">
                         <label for="precio">Precio</label>
                         <input type="number" class="form-control" id="price" min="0" name="price" value="{{ @old('price')}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="tags">Tags</label>
+                        <input type="text" class="form-control" id="tags" name="tags" value="{{ @old('tags')}}">
                     </div>
                     <div class="form-group">
                         <label for="imagen">Foto del Producto</label>
