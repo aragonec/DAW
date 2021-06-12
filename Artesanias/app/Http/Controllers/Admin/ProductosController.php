@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Product;
+use File;
 
 class ProductosController extends Controller
 {
@@ -16,8 +17,13 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        //dd('funciona');
-        return view('admin.productos');
+        $datos=\DB::table('products')
+            ->select('products.*')
+            //->where('id','?') //syntax para where
+            ->orderBy('id','DESC')
+            ->get();
+        return view('admin.productos') 
+            ->with('productos',$datos);
     }
 
     /**
@@ -66,7 +72,7 @@ class ProductosController extends Controller
                 'slug'=>''
             ]);
             $producto->save();
-            dd($producto->id);
+            return back()->with('Listo', 'Se ha agregado correctamente');
         }
     }
 
@@ -112,6 +118,11 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Product::find($id);
+        if(File::exists( public_path('img/productos/'.$producto->img_product))){
+            unlink( public_path('img/productos/'.$producto->img_product));
+        }
+        $producto->delete();
+        return back()->with('Listo', 'Se ha borrado correctamente');
     }
 }
