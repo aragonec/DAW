@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 class UsuariosController extends Controller
 {
@@ -11,6 +12,7 @@ class UsuariosController extends Controller
         $this->middleware('auth');
     }
     public function index(){
+        if (Auth::user()->level != "admin"){return redirect('/admin');}
         return view('admin.users');
     }
 }
