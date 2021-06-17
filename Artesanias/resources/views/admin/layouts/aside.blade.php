@@ -74,6 +74,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="/admin/clientes" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Clientes
+                </p>
+              </a>
+            </li>
           @endif
           <li class="nav-item">
             <a class="nav-link"href="{{ route('logout') }}"
