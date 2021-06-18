@@ -11,9 +11,13 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item">
+                        <a class="btn btn-outline-primary btn-sm" target="blank "href="generarPDF">
+                        <i class="fa fa-print"> Imprimir Datos</i>                         </a>
+                    </li>
+                    <li class="breadcrumb-item">
                         <button class="btn btn-outline-primary btn-sm" 
                         data-toggle="modal" data-target="#modal-add">
-                            Agregar Cliente
+                            <i class="fa fa-plus"> Agregar Cliente</i> 
                         </button>
                     </li>
                 </ol>
@@ -33,44 +37,38 @@
             @endif
             <table class="table">
                 <thead>
-                    <tr>
+                    <tr>    
                         <th>Nombre</th>
-                        <th>User ID</th>
+                        <th>Email</th>
                         <th>Direccion</th>
-                        <th>Ciudad</th>
-                        <th>Pais</th>
-                        <th></th>
+                        <th>Ciudad</th>                      
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($clientes as $p)
+                    @foreach($datos as $c)
                     <tr>
+                        
+                        <td>{{$c->name}}</td>
+                        <td>{{$c->email}}</td>
+                        <td>{{$c->address}}</td>
+                        <td>{{$c->city}}</td>                       
                         <td>
-                            <img src="{{ asset('img/productos/'.$p->img_product)}}" alt="" width="70px">
-                            {{$p->name}}
-                        </td>
-                        <td>{{$p->description}}</td>
-                        <td>{{$p->price}}</td>
-                        <td>{{$p->stock}}</td>
-                        <td>{{$p->tags}}</td>
-                        <td>
-                            <button class="btn btn-primary btnEdit" data-id="{{ $p->id}}"
-                            data-name="{{$p->name}}"
-                            data-description="{{$p->description}}"
-                            data-price="{{$p->price}}"
-                            data-stock="{{$p->stock}}"
-                            data-tags="{{$p->tags}}"
+                            <button class="btn btn-primary btnEdit" data-id="{{ $c->id}}"
+                            data-name="{{$c->name}}"
+                            data-description="{{$c->email}}"
+                            data-price="{{$c->address}}"
+                            data-stock="{{$c->city}}"
                             data-toggle="modal" data-target="#modal-edit"> 
                             <i class="fa fa-edit"></i>
                             </button>
-                            <button class="btn btn-danger btnEliminar" data-id="{{ $p->id}}"
+                            <button class="btn btn-danger btnEliminar" data-id="{{ $c->id}}"
                             data-toggle="modal" data-target="#modal-delete"> 
                             <i class="fa fa-trash"></i>
                             </button>
-                            <form class= "d-none" action="{{ url('/admin/productos', ['id'=>$p->id]) }}" 
-                            method="POST" id="formEliminar_{{ $p->id}}">
+                            <form class= "d-none" action="{{ url('/admin/productos', ['id'=>$c->id]) }}" 
+                            method="POST" id="formEliminar_{{ $c->id}}">
                             @csrf
-                            <input type="text" name="id" value="{{ $p->id}}">
+                            <input type="text" name="id" value="{{ $c->id}}">
                             <input type="text" name="_method" value="delete">
                             </form>
                         </td>
@@ -81,6 +79,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- Modal-Edit -->
 <div class="modal fade" id="modal-edit" style="display: none;" 
     aria-hidden="true">
@@ -148,6 +148,7 @@
         <!-- /.modal-dialog -->
 </div>
 <!-- /.modal-edit -->
+
 
 <!-- Modal-add -->
 <div class="modal fade" id="modal-add" style="display: none;" 
@@ -243,6 +244,7 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal-delete -->
+
 
 @endsection
 

@@ -13,7 +13,7 @@
                     <li class="breadcrumb-item">
                         <button class="btn btn-outline-primary btn-sm" 
                         data-toggle="modal" data-target="#modal-add">
-                            Agregar Producto
+                        <i class="fa fa-plus"> Agregar Productos</i> 
                         </button>
                     </li>
                 </ol>
